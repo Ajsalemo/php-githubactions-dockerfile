@@ -29,14 +29,13 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
         with:
+          appSourcePath: ${{ github.workspace }} 
           registryUrl: ansalemoacr.azurecr.io
           registryUsername: ${{ secrets.ANSALEMOGHACTIONSACAENV_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.ANSALEMOGHACTIONSACAENV_REGISTRY_PASSWORD }}
           containerAppName: ansalemo-gh-actions-acaenv
           resourceGroup: ansalemo-rg
           imageToBuild: ansalemoacr.azurecr.io/ansalemo-gh-actions-acaenv:${{ github.sha }}
-          imageToDeploy: ansalemoacr.azurecr.io/ansalemo-gh-actions-acaenv:${{ github.sha }}
-          dockerfilePath: Dockerfile
 
      
 
