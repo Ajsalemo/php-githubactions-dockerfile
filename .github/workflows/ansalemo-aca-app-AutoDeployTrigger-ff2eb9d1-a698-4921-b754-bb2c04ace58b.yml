@@ -35,7 +35,7 @@ jobs:
           registryPassword: ${{ secrets.ANSALEMOACAAPP_REGISTRY_PASSWORD }}
           containerAppName: ansalemo-aca-app
           resourceGroup: ansalemo-rg
-          imageToBuild: ansalemoacr.azurecr.io/ansalemo-aca-app1:${{ github.sha }}
+          imageToBuild: ansalemoacr1.azurecr.io/ansalemo-aca-app:${{ github.sha }}
           dockerfilePath: ./Dockerfile
 
      
