@@ -35,6 +35,7 @@ jobs:
           containerAppName: ansalemo-aca-app
           resourceGroup: ansalemo-rg
           imageToDeploy: ansalemoacr.azurecr.io/container-apps-node-sigterm:process-on
+          environmentVariables: 'PORT=8080'
 
      
 
