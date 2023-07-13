@@ -34,7 +34,7 @@ jobs:
           registryPassword: ${{ secrets.ANSALEMOACAAPP_REGISTRY_PASSWORD }}
           containerAppName: ansalemo-aca-app
           resourceGroup: ansalemo-rg
-          imageToDeploy: ansalemoacr.azurecr.io/container-apps-node-sigterm:process-on
+          imageToDeploy: ansalemoacr.azurecr.io/container-apps-node-sigterm:process-on2
           environmentVariables: 'PORT=8080'
 
      
