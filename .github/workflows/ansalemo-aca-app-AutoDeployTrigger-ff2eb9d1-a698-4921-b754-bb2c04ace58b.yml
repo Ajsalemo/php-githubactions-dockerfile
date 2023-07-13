@@ -36,7 +36,7 @@ jobs:
           containerAppName: ansalemo-aca-app
           resourceGroup: ansalemo-rg
           imageToBuild: ansalemoacr.azurecr.io/ansalemo-aca-app:${{ github.sha }}
-          dockerfilePath: Dockerfile
+          dockerfilePath: ./github/Dockerfile
 
      
 
