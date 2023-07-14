@@ -34,7 +34,7 @@ jobs:
           registryPassword: ${{ secrets.ANSALEMOACAAPP_REGISTRY_PASSWORD }}
           containerAppName: ansalemo-aca-app
           resourceGroup: ansalemo-rg
-          imageToDeploy: ansalemoacr.azurecr.io/ansalemo-aca-app:${{ github.sha }}
+          imageToDeploy: ansalemoacr.azurecr.io/ansalemo-aca-app2:${{ github.sha }}
 
      
 
