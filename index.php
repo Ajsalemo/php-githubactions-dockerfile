@@ -45,5 +45,5 @@ class GitHubApi
 }
 // Create a new instance of the GitHubApi class
 $gitHubApiClass = new GitHubApi();
-// Invoke the coindesk call
+// Invoke the coindesk API call
 $gitHubApiClass->makeCoindeskAPICall();
