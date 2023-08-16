@@ -1,0 +1,42 @@
+name: Trigger auto deployment for ansalemo-php-cicd-ghactions
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/ansalemo-php-cicd-ghactions-AutoDeployTrigger-67453a9a-e679-4118-9363-dafe3d805e4d.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.ANSALEMOPHPCICDGHACTIONS_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: ansalemoacr.azurecr.io
+          registryUsername: ${{ secrets.ANSALEMOPHPCICDGHACTIONS_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.ANSALEMOPHPCICDGHACTIONS_REGISTRY_PASSWORD }}
+          containerAppName: ansalemo-php-cicd-ghactions
+          resourceGroup: ansalemo-rg
+          imageToBuild: ansalemoacr.azurecr.io/ansalemo-php-cicd-ghactions:${{ github.sha }}
+          
+
+     
+
