@@ -43,6 +43,7 @@ class GitHubApi
         $this->coinDeskStructuredResponse($json);
     }
 }
-
+// Create a new instance of the GitHubApi class
 $gitHubApiClass = new GitHubApi();
+// Invoke the coindesk call
 $gitHubApiClass->makeCoindeskAPICall();
