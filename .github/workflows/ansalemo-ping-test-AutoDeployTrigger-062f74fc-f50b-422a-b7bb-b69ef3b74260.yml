@@ -7,17 +7,15 @@ on:
     branches: 
       [ main ]
     paths:
-    - '//**'
+    - '**'
     - '.github/workflows/ansalemo-ping-test-AutoDeployTrigger-062f74fc-f50b-422a-b7bb-b69ef3b74260.yml'
 
   # Allow manual trigger 
-  workflow_dispatch:      
-
+  workflow_dispatch:
+      
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: 
-      id-token: write #This is required for requesting the OIDC JWT Token
 
     steps:
       - name: Checkout to the branch
@@ -26,9 +24,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.ANSALEMOPINGTEST_AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.ANSALEMOPINGTEST_AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.ANSALEMOPINGTEST_AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.ANSALEMOPINGTEST_AZURE_CREDENTIALS }}
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
@@ -40,6 +36,7 @@ jobs:
           containerAppName: ansalemo-ping-test
           resourceGroup: ansalemo-rg
           imageToBuild: ansalemoacr.azurecr.io/ansalemo-ping-test:${{ github.sha }}
-          dockerfilePath: Dockerfile
+          
 
+     
 
